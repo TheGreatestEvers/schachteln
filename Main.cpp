@@ -7,7 +7,8 @@ int main() {
     cb.initBoard();
     cb.printBoard(Color::WHITE);
     std::cout << "\n";
-    cb.printBoard(Color::BLACK);
+    cb.movePiece(Pos{1,4}, Pos{3,4});
+    cb.printBoard(Color::WHITE);
 
     return 0;
 }

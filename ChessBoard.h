@@ -2,6 +2,7 @@
 #define CHESSBOARD_H
 
 #include <vector>
+#include <memory>
 using namespace std;
 
 enum Type {
@@ -16,13 +17,22 @@ enum Type {
 
 enum Color {
     WHITE,
-    BLACK
+    BLACK,
+    NONE
+};
+
+
+struct Pos {
+    int row;
+    int col;
 };
 
 struct Piece {
     Type t;
     Color c;
+    Pos* possible_moves = nullptr;
 };
+
 
 class ChessBoard {  
 
@@ -36,11 +46,16 @@ class ChessBoard {
 
     //Getter and setter for board
     vector<vector<Piece>> getBoard();
-    void setBoard(vector<vector<Piece>> board);
-    Piece getPiece(size_t i, size_t j);
-    
+    Piece getPiece(Pos pos);
     void initBoard();
+    void movePiece(Pos src, Pos dest);
     void printBoard(Color c);
+    void setBoard(vector<vector<Piece>> board);
+    
+   
+    
+    
+    
 
     
 };
